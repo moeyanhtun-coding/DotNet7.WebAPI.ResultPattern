@@ -1,4 +1,4 @@
-﻿namespace DotNet7.Blog.Domain.RequestModel;
+﻿namespace DotNet7.Blog.Database.RequestModel;
 
 public class BlogRequestModel
 {
