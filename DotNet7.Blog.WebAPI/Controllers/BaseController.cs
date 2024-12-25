@@ -1,6 +1,4 @@
-﻿using DotNet7.Blog.Domain;
-
-namespace DotNet7.Blog.WebAPI.Controllers;
+﻿namespace DotNet7.Blog.WebAPI.Controllers;
 
 public class BaseController : ControllerBase
 {
