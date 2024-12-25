@@ -986,6 +986,19 @@
           }
         }
       },
+      "Ulid/1.3.4": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Ulid.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Ulid.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "DotNet7.Blog.Database/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -2707,6 +2720,28 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Ulid/1.3.4": {
+      "sha512": "6IaGquwjjfW+BoHSV844y12Uy2kxbboYNmsibxr2lotcSPAA3LKy1CKcAQ8JOdAdL4xMoDNXA1oxG41w7fbr6Q==",
+      "type": "package",
+      "path": "ulid/1.3.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/net6.0/Ulid.dll",
+        "lib/net6.0/Ulid.xml",
+        "lib/net7.0/Ulid.dll",
+        "lib/net7.0/Ulid.xml",
+        "lib/net8.0/Ulid.dll",
+        "lib/net8.0/Ulid.xml",
+        "lib/netstandard2.0/Ulid.dll",
+        "lib/netstandard2.0/Ulid.xml",
+        "lib/netstandard2.1/Ulid.dll",
+        "lib/netstandard2.1/Ulid.xml",
+        "ulid.1.3.4.nupkg.sha512",
+        "ulid.nuspec"
+      ]
+    },
     "DotNet7.Blog.Database/1.0.0": {
       "type": "project",
       "path": "../DotNet7.Blog.Database/DotNet7.Blog.Database.csproj",
@@ -2715,7 +2750,8 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "DotNet7.Blog.Database >= 1.0.0"
+      "DotNet7.Blog.Database >= 1.0.0",
+      "Ulid >= 1.3.4"
     ]
   },
   "packageFolders": {
@@ -2758,6 +2794,12 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "Ulid": {
+            "target": "Package",
+            "version": "[1.3.4, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
