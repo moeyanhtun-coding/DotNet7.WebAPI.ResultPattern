@@ -26,5 +26,17 @@ public class BlogController : BaseController
         }
     }
 
-
+    [HttpPost]
+    public async Task<IActionResult> PostBlog(BlogRequestModel blog)
+    {
+        try
+        {
+            var model = await _blogService.CreateBlog(blog);
+            return Execute(model);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }
