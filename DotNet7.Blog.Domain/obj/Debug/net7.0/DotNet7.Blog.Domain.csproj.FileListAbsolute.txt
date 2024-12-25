@@ -1,0 +1,15 @@
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\bin\Debug\net7.0\DotNet7.Blog.Domain.deps.json
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\bin\Debug\net7.0\DotNet7.Blog.Domain.dll
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\bin\Debug\net7.0\DotNet7.Blog.Domain.pdb
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\bin\Debug\net7.0\DotNet7.Blog.Database.dll
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\bin\Debug\net7.0\DotNet7.Blog.Database.pdb
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.csproj.AssemblyReference.cache
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.AssemblyInfoInputs.cache
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.AssemblyInfo.cs
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.csproj.CoreCompileInputs.cache
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.csproj.CopyComplete
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.dll
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\refint\DotNet7.Blog.Domain.dll
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\DotNet7.Blog.Domain.pdb
+D:\DotNetProject\DotNet7.WebAPI.ResultPattern\DotNet7.Blog.Domain\obj\Debug\net7.0\ref\DotNet7.Blog.Domain.dll
