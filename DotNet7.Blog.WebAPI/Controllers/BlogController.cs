@@ -1,10 +1,4 @@
-﻿using DotNet7.Blog.Database.Models;
-using DotNet7.Blog.Database.RequestModel;
-using DotNet7.Blog.Database.ResponseModel;
-using DotNet7.Blog.Domain.Feature;
-using Microsoft.EntityFrameworkCore;
-
-namespace DotNet7.Blog.WebAPI.Controllers;
+﻿namespace DotNet7.Blog.WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
