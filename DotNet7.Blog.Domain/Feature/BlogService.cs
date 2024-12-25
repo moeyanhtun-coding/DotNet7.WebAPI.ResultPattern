@@ -1,6 +1,4 @@
-﻿using DotNet7.Blog.Database.RequestModel;
-
-namespace DotNet7.Blog.Domain.Feature;
+﻿namespace DotNet7.Blog.Domain.Feature;
 
 public class BlogService
 {
