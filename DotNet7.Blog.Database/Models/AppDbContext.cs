@@ -21,7 +21,7 @@ public partial class AppDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            string connectionString = "Data Source=.;Inital Catalog=Blog;User ID=sa; Password=sasa@123; TrustServerCertificate=true";
+            string connectionString = "Data Source=.;Initial Catalog=Blog;User ID=sa; Password=sasa@123; TrustServerCertificate=true";
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
