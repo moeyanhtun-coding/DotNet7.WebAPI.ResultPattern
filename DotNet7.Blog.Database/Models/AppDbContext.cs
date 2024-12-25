@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-
-namespace DotNet7.Blog.Database.Models;
+﻿namespace DotNet7.Blog.Database.Models;
 
 public partial class AppDbContext : DbContext
 {
