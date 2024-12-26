@@ -6,7 +6,7 @@ public class BlogService
 
     public async Task<Result<BlogListResponseModel>> GetBlogs()
     {
-        Result<BlogListResponseModel> model;
+        Result<BlogListResponseModel> model = new Result<BlogListResponseModel>();
         try
         {
             var lst = await _dbContext.TblBlogs.ToListAsync();
@@ -35,26 +35,10 @@ public class BlogService
 
     public async Task<Result<BlogResponseModel>> GetBlogByCode(string code)
     {
-        Result<BlogResponseModel> model;
+        Result<BlogResponseModel> model = new Result<BlogResponseModel>();
         try
         {
-            if (string.IsNullOrEmpty(code))
-            {
-                model = Result<BlogResponseModel>.ValidationError("Blog Code is required");
-                goto Result;
-            }
-
-            var item = await _dbContext.TblBlogs.AsNoTracking().FirstOrDefaultAsync(x => x.BlogCode == code);
-            if (item is null)
-            {
-                model = Result<BlogResponseModel>.ValidationError("Blog code does not exist");
-                goto Result;
-            }
-
-            var blog = new BlogResponseModel
-            {
-                Blog = item,
-            };
+            var blog = await FindBlogByCode(code);
 
             model = Result<BlogResponseModel>.Success(blog, "Blog is found");
             Result:
@@ -68,7 +52,7 @@ public class BlogService
 
     public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel reqModel)
     {
-        Result<BlogResponseModel> model;
+        Result<BlogResponseModel> model = new Result<BlogResponseModel>();
         try
         {
             if (string.IsNullOrEmpty(reqModel.BlogName))
@@ -100,6 +84,7 @@ public class BlogService
 
             await _dbContext.TblBlogs.AddAsync(blog);
             var result = await _dbContext.SaveChangesAsync();
+
             if (result == 0)
             {
                 model = Result<BlogResponseModel>.SystemError("An error has occured");
@@ -123,21 +108,11 @@ public class BlogService
 
     public async Task<Result<BlogResponseModel>> UpdateBlog(string code, BlogRequestModel reqModel)
     {
-        Result<BlogResponseModel> model;
+        Result<BlogResponseModel> model = new Result<BlogResponseModel>();
         try
         {
-            if (string.IsNullOrEmpty(code))
-            {
-                model = Result<BlogResponseModel>.ValidationError("Blog code is required");
-                goto Result;
-            }
-
-            var item = await _dbContext.TblBlogs.AsNoTracking().FirstOrDefaultAsync(x => x.BlogCode == code);
-            if (item is null)
-            {
-                model = Result<BlogResponseModel>.ValidationError("Blog code does not exist");
-                goto Result;
-            }
+            var blog = await FindBlogByCode(code);
+            var item = blog.Blog!;
 
             if (!string.IsNullOrEmpty(reqModel.BlogName))
                 item.BlogTitle = reqModel.BlogName;
@@ -156,6 +131,56 @@ public class BlogService
 
             model = Result<BlogResponseModel>.Success("Blog Updated Successfully");
             Result:
+            return model;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<Result<BlogResponseModel>> DeleteBlog(string code)
+    {
+        Result<BlogResponseModel> model = new Result<BlogResponseModel>();
+        try
+        {
+            var blog = await FindBlogByCode(code);
+            var item = blog.Blog!;
+            item.DeleteFlag = true;
+
+            _dbContext.Entry(item).State = EntityState.Modified;
+            var result = await _dbContext.SaveChangesAsync();
+
+            if (result is 0)
+            {
+                model = Result<BlogResponseModel>.SystemError("An error has occured");
+                goto Result;
+            }
+
+            model = Result<BlogResponseModel>.Success("Blog Deleted Successfully");
+
+            Result:
+            return model;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<BlogResponseModel> FindBlogByCode(string code)
+    {
+        BlogResponseModel model = new BlogResponseModel();
+        try
+        {
+            if (string.IsNullOrEmpty(code))
+                throw new ArgumentException("Blog code is required");
+
+            var blog = await _dbContext.TblBlogs.AsNoTracking().FirstOrDefaultAsync(x => x.BlogCode == code);
+
+            if (blog is null)
+                throw new KeyNotFoundException("Blog code does not exist");
+            model.Blog = blog;
             return model;
         }
         catch (Exception ex)
