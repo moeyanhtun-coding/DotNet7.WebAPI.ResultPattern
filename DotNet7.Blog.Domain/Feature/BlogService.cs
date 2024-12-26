@@ -45,6 +45,12 @@ public class BlogService
             }
 
             var item = await _dbContext.TblBlogs.AsNoTracking().FirstOrDefaultAsync(x => x.BlogCode == code);
+            if (item is null)
+            {
+                model = Result<BlogResponseModel>.ValidationError("Blog code does not exist");
+                goto Result;
+            }
+
             var blog = new BlogResponseModel
             {
                 Blog = item,
