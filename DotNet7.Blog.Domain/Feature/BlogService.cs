@@ -33,6 +33,32 @@ public class BlogService
         }
     }
 
+    public async Task<Result<BlogResponseModel>> GetBlogByCode(string code)
+    {
+        Result<BlogResponseModel> model;
+        try
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                model = Result<BlogResponseModel>.ValidationError("Blog Code is required");
+                goto Result;
+            }
+            
+            var item = await _dbContext.TblBlogs.FirstOrDefaultAsync(x => x.BlogCode == code)!;
+            var blog = new BlogResponseModel
+            {
+                Blog = item,
+            };
+            
+            model = Result<BlogResponseModel>.Success(blog, "Blog is found");
+            Result:
+            return model;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
     public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel reqModel)
     {
         Result<BlogResponseModel> model ;
@@ -55,10 +81,10 @@ public class BlogService
                 model = Result<BlogResponseModel>.ValidationError("Blog content is required");
                 goto Result;
             }
-
+            var blogCode = Ulid.NewUlid().ToString();
             TblBlog blog = new TblBlog()
             {
-                BlogCode = Ulid.NewUlid().ToString(),
+                BlogCode = "B-" + blogCode.Substring(0,15),
                 BlogTitle = reqModel.BlogName,
                 BlogAuthor = reqModel.BlogAuthor,
                 BlogContent = reqModel.BlogContent,
