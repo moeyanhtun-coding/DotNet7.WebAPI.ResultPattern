@@ -61,4 +61,18 @@ public class BlogController : BaseController
             throw new Exception(ex.Message);
         }
     }
+
+    [HttpDelete("{code}")]
+    public async Task<IActionResult> DeleteBlog(string code)
+    {
+        try
+        {
+            var model = await _blogService.DeleteBlog(code);
+            return Execute(model);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }
