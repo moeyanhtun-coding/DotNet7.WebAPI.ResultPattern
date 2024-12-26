@@ -30,7 +30,7 @@ public class BlogController : BaseController
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message); 
+            throw new Exception(ex.Message);
         }
     }
 
@@ -40,6 +40,20 @@ public class BlogController : BaseController
         try
         {
             var model = await _blogService.CreateBlog(blog);
+            return Execute(model);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    [HttpPatch("{code}")]
+    public async Task<IActionResult> UpdateBlog(string code, BlogRequestModel blog)
+    {
+        try
+        {
+            var model = await _blogService.UpdateBlog(code, blog);
             return Execute(model);
         }
         catch (Exception ex)
