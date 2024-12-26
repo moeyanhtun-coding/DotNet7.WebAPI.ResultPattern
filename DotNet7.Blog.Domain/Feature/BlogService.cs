@@ -43,13 +43,13 @@ public class BlogService
                 model = Result<BlogResponseModel>.ValidationError("Blog Code is required");
                 goto Result;
             }
-            
-            var item = await _dbContext.TblBlogs.FirstOrDefaultAsync(x => x.BlogCode == code)!;
+
+            var item = await _dbContext.TblBlogs.AsNoTracking().FirstOrDefaultAsync(x => x.BlogCode == code);
             var blog = new BlogResponseModel
             {
                 Blog = item,
             };
-            
+
             model = Result<BlogResponseModel>.Success(blog, "Blog is found");
             Result:
             return model;
@@ -59,9 +59,10 @@ public class BlogService
             throw new Exception(ex.Message);
         }
     }
+
     public async Task<Result<BlogResponseModel>> CreateBlog(BlogRequestModel reqModel)
     {
-        Result<BlogResponseModel> model ;
+        Result<BlogResponseModel> model;
         try
         {
             if (string.IsNullOrEmpty(reqModel.BlogName))
@@ -81,29 +82,73 @@ public class BlogService
                 model = Result<BlogResponseModel>.ValidationError("Blog content is required");
                 goto Result;
             }
+
             var blogCode = Ulid.NewUlid().ToString();
             TblBlog blog = new TblBlog()
             {
-                BlogCode = "B-" + blogCode.Substring(0,15),
+                BlogCode = "B-" + blogCode.Substring(0, 15),
                 BlogTitle = reqModel.BlogName,
                 BlogAuthor = reqModel.BlogAuthor,
                 BlogContent = reqModel.BlogContent,
             };
-            
-           await _dbContext.TblBlogs.AddAsync(blog);
-           var result =  await _dbContext.SaveChangesAsync();
-           if (result == 0)
-           {
-               model = Result<BlogResponseModel>.SystemError("An error has occured");
-               goto Result; 
-           }
 
-           BlogResponseModel respModel = new BlogResponseModel()
-           {
-               Blog = blog
-           };
+            await _dbContext.TblBlogs.AddAsync(blog);
+            var result = await _dbContext.SaveChangesAsync();
+            if (result == 0)
+            {
+                model = Result<BlogResponseModel>.SystemError("An error has occured");
+                goto Result;
+            }
 
-           model = Result<BlogResponseModel>.Success(respModel, "Blog Created");
+            BlogResponseModel respModel = new BlogResponseModel()
+            {
+                Blog = blog
+            };
+
+            model = Result<BlogResponseModel>.Success(respModel, "Blog Created");
+            Result:
+            return model;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<Result<BlogResponseModel>> UpdateBlog(string code, BlogRequestModel reqModel)
+    {
+        Result<BlogResponseModel> model;
+        try
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                model = Result<BlogResponseModel>.ValidationError("Blog code is required");
+                goto Result;
+            }
+
+            var item = await _dbContext.TblBlogs.AsNoTracking().FirstOrDefaultAsync(x => x.BlogCode == code);
+            if (item is null)
+            {
+                model = Result<BlogResponseModel>.ValidationError("Blog code does not exist");
+                goto Result;
+            }
+
+            if (!string.IsNullOrEmpty(reqModel.BlogName))
+                item.BlogTitle = reqModel.BlogName;
+            if (!string.IsNullOrEmpty(reqModel.BlogAuthor))
+                item.BlogAuthor = reqModel.BlogAuthor;
+            if (!string.IsNullOrEmpty(reqModel.BlogContent))
+                item.BlogContent = reqModel.BlogContent;
+
+            _dbContext.Entry(item).State = EntityState.Modified;
+            var result = await _dbContext.SaveChangesAsync();
+            if (result is 0)
+            {
+                model = Result<BlogResponseModel>.SystemError("An error has occured");
+                goto Result;
+            }
+
+            model = Result<BlogResponseModel>.Success("Blog Updated Successfully");
             Result:
             return model;
         }
