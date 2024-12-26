@@ -2,7 +2,7 @@
 
 public class BlogRequestModel
 {
-    public string BlogName { get; set; }
-    public string BlogAuthor { get; set; }
-    public string BlogContent { get; set; }
+    public string? BlogName { get; set; }
+    public string? BlogAuthor { get; set; }
+    public string? BlogContent { get; set; }
 }
