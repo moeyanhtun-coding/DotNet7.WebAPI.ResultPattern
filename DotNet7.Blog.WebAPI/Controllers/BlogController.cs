@@ -20,6 +20,20 @@ public class BlogController : BaseController
         }
     }
 
+    [HttpGet("{code}")]
+    public async Task<IActionResult> GetBlogByCode(string code)
+    {
+        try
+        {
+            var model = await _blogService.GetBlogByCode(code);
+            return Execute(model);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message); 
+        }
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostBlog(BlogRequestModel blog)
     {
