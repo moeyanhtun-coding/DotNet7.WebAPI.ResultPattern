@@ -26,24 +26,24 @@ public class Result<T>
         };
     }
 
-    public static Result<T?> ValidationError(string message, T? data = default)
+    public static Result<T> ValidationError(string message, T? data = default)
     {
-        return new Result<T?>
+        return new Result<T>
         {
             IsSuccess = false,
             Type = EnumRespType.ValidationError,
-            Data = data,
+            Data = data!,
             Message = message
         };
     }
 
-    public static Result<T?> SystemError(string message, T? data = default)
+    public static Result<T> SystemError(string message, T? data = default)
     {
-        return new Result<T?>
+        return new Result<T>
         {
             IsSuccess = false,
             Type = EnumRespType.SystemError,
-            Data = data,
+            Data = data!,
             Message = message
         };
     }
