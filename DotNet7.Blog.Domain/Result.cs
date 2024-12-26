@@ -15,9 +15,9 @@ public class Result<T>
    
     public string Message { get; set; }
 
-    public static Result<T> Success(T data, string message = "Success")
+    public static Result<T?> Success(T? data, string message = "Success")
     {
-        return new Result<T>
+        return new Result<T?>
         {
             IsSuccess = true,
             Type = EnumRespType.Success,
@@ -47,5 +47,14 @@ public class Result<T>
             Message = message
         };
     }
-        
+
+    public static Result<T?> Success(string message)
+    {
+        return new Result<T?>
+        {
+            IsSuccess = true,
+            Type = EnumRespType.Success,
+            Message = message
+        };
+    }
 }
