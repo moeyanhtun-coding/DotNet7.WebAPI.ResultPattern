@@ -4,7 +4,7 @@ namespace DotNet7.Blog.Database.ResponseModel;
 
 public class BlogResponseModel
 {
-    public TblBlog Blog { get; set; }
+    public TblBlog? Blog { get; set; }
 }
 
 public class BlogListResponseModel
