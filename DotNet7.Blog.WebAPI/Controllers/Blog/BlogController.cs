@@ -1,4 +1,6 @@
-﻿namespace DotNet7.Blog.WebAPI.Controllers;
+﻿using DotNet7.Blog.Domain.Features;
+
+namespace DotNet7.Blog.WebAPI.Controllers.Blog;
 
 [Route("api/[controller]")]
 [ApiController]

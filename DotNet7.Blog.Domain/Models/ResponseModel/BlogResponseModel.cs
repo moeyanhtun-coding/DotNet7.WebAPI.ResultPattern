@@ -1,6 +1,4 @@
-﻿using DotNet7.Blog.Database.Models;
-
-namespace DotNet7.Blog.Database.ResponseModel;
+﻿namespace DotNet7.Blog.Domain.Models.ResponseModel;
 
 public class BlogResponseModel
 {
