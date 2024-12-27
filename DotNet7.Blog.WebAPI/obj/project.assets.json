@@ -11630,32 +11630,40 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP Omen 16\\.nuget\\packages\\": {}
+    "C:\\Users\\Sann Lynn Htun\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DotNetProject\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.WebAPI\\DotNet7.Blog.WebAPI.csproj",
+      "projectUniqueName": "D:\\slh\\proj\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.WebAPI\\DotNet7.Blog.WebAPI.csproj",
       "projectName": "DotNet7.Blog.WebAPI",
-      "projectPath": "D:\\DotNetProject\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.WebAPI\\DotNet7.Blog.WebAPI.csproj",
-      "packagesPath": "C:\\Users\\HP Omen 16\\.nuget\\packages\\",
-      "outputPath": "D:\\DotNetProject\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.WebAPI\\obj\\",
+      "projectPath": "D:\\slh\\proj\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.WebAPI\\DotNet7.Blog.WebAPI.csproj",
+      "packagesPath": "C:\\Users\\Sann Lynn Htun\\.nuget\\packages\\",
+      "outputPath": "D:\\slh\\proj\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.WebAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\HP Omen 16\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Sann Lynn Htun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\DotNetProject\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.Domain\\DotNet7.Blog.Domain.csproj": {
-              "projectPath": "D:\\DotNetProject\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.Domain\\DotNet7.Blog.Domain.csproj"
+            "D:\\slh\\proj\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.Domain\\DotNet7.Blog.Domain.csproj": {
+              "projectPath": "D:\\slh\\proj\\DotNet7.WebAPI.ResultPattern\\DotNet7.Blog.Domain\\DotNet7.Blog.Domain.csproj"
             }
           }
         }
@@ -11706,7 +11714,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.410\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Sann Lynn Htun\\.dotnet\\sdk\\7.0.410\\RuntimeIdentifierGraph.json"
       }
     }
   }
