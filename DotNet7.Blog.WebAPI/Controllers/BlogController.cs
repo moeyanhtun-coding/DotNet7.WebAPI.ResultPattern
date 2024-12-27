@@ -9,70 +9,35 @@ public class BlogController : BaseController
     [HttpGet]
     public async Task<IActionResult> GetBlogs()
     {
-        try
-        {
-            var model = await _blogService.GetBlogs();
-            return Execute(model);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+        var model = await _blogService.GetBlogs();
+        return Execute(model);
     }
 
     [HttpGet("{code}")]
     public async Task<IActionResult> GetBlogByCode(string code)
     {
-        try
-        {
-            var model = await _blogService.GetBlogByCode(code);
-            return Execute(model);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+        var model = await _blogService.GetBlogByCode(code);
+        return Execute(model);
     }
 
     [HttpPost]
     public async Task<IActionResult> PostBlog(BlogRequestModel blog)
     {
-        try
-        {
-            var model = await _blogService.CreateBlog(blog);
-            return Execute(model);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+        var model = await _blogService.CreateBlog(blog);
+        return Execute(model);
     }
 
     [HttpPatch("{code}")]
     public async Task<IActionResult> UpdateBlog(string code, BlogRequestModel blog)
     {
-        try
-        {
-            var model = await _blogService.UpdateBlog(code, blog);
-            return Execute(model);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+        var model = await _blogService.UpdateBlog(code, blog);
+        return Execute(model);
     }
 
     [HttpDelete("{code}")]
     public async Task<IActionResult> DeleteBlog(string code)
     {
-        try
-        {
-            var model = await _blogService.DeleteBlog(code);
-            return Execute(model);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+        var model = await _blogService.DeleteBlog(code);
+        return Execute(model);
     }
 }
