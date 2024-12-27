@@ -1,4 +1,6 @@
-﻿namespace DotNet7.Blog.Domain.Feature;
+﻿using DotNet7.Blog.Domain.Models.ResponseModel;
+
+namespace DotNet7.Blog.Domain.Features;
 
 public class BlogService
 {
