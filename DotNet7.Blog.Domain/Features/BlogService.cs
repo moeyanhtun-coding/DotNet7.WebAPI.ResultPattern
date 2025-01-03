@@ -5,10 +5,10 @@ namespace DotNet7.Blog.Domain.Features;
 public class BlogService
 {
     private readonly AppDbContext _dbContext ;
-
-    public BlogService()
+    
+    public BlogService(AppDbContext dbContext)
     {
-        _dbContext = new AppDbContext();
+        _dbContext = dbContext;
     }
 
     public async Task<Result<BlogListResponseModel>> GetBlogs()
