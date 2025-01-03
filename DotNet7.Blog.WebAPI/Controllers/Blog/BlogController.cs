@@ -8,9 +8,9 @@ public class BlogController : BaseController
 {
     private readonly BlogService _blogService;
 
-    public BlogController()
+    public BlogController(BlogService blogService)
     {
-        _blogService = new BlogService();
+        _blogService = blogService;
     }
 
     [HttpGet]
