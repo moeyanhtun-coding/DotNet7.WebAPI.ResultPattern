@@ -4,7 +4,12 @@ namespace DotNet7.Blog.Domain.Features;
 
 public class BlogService
 {
-    private readonly AppDbContext _dbContext = new AppDbContext();
+    private readonly AppDbContext _dbContext ;
+
+    public BlogService()
+    {
+        _dbContext = new AppDbContext();
+    }
 
     public async Task<Result<BlogListResponseModel>> GetBlogs()
     {

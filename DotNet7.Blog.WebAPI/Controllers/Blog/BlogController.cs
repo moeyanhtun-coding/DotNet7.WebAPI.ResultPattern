@@ -6,7 +6,12 @@ namespace DotNet7.Blog.WebAPI.Controllers.Blog;
 [ApiController]
 public class BlogController : BaseController
 {
-    private readonly BlogService _blogService = new BlogService();
+    private readonly BlogService _blogService;
+
+    public BlogController()
+    {
+        _blogService = new BlogService();
+    }
 
     [HttpGet]
     public async Task<IActionResult> GetBlogs()
