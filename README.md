@@ -1,1 +1,1 @@
-This is Apply Result Pattern with Blog CRUD 
+This is Apply Result Pattern with Blog CRUD  
